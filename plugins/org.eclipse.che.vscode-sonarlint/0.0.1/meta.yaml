@@ -1,0 +1,10 @@
+id: org.eclipse.che.vscode-sonarlint
+version: 0.0.1
+type: VS Code extension
+name: Vscode sonarlint extension
+title: sonar lint
+description: sonar lint
+icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
+attributes:
+  extension: "vscode:extension/sonarsource.sonarlint-vscode"
+  container-image: "garagatyi/remotetheia:java"
