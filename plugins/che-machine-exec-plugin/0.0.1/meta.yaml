@@ -5,4 +5,4 @@ name: Che machine-exec Service
 title: Che machine-exec Service Plugin
 description: Che Plug-in with che-machine-exec service to provide creation terminal or tasks for Eclipse CHE workspace machines.
 icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
-url: https://github.com/eclipse/che-machine-exec/releases/download/0.0.1/che-service-plugin.tar.gz
+url: https://raw.githubusercontent.com/eclipse/che-machine-exec/f726b1c64ec529d13b5dbd7dd3ae7c9ac1cefdef/assembly/etc/che-plugin.yaml
