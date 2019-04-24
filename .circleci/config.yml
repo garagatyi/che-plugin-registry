@@ -45,7 +45,4 @@ workflows:
   workflow:
     jobs:
       - shellcheck
-      - build:
-          filters:
-            branches:
-              only: master
+      - build
