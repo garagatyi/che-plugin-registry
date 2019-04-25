@@ -13,10 +13,10 @@ set -e
 source ./util.sh
 
 ## check that icon tags in meta.yaml files points to the .svg images
-declare -a arr=(`find . -name "meta.yaml"`)
+declare -a arr="($(find . -name 'meta.yaml'))"
 for i in "${arr[@]}"
 do
-    ICON=$(yq r $i icon | sed 's/^"\(.*\)"$/\1/')
+    ICON=$(yq r "$i" icon | sed 's/^"\(.*\)"$/\1/')
     # Regex: contains .svg and not contains dots after it (to avoid xxx.svg.jpg hacks)
     if [[ ! $ICON =~ (\.svg)+[^\.]*$ ]]; then
       plugin_id=$(evaluate_plugin_id $i)

@@ -12,7 +12,7 @@ set -e
 
 source ./util.sh
 
-declare -a arr=(`find plugins -name "meta.yaml"`)
+declare -a arr="($(find plugins -name 'meta.yaml'))"
 for i in "${arr[@]}"
 do
     id=$(yq r "$i" id | sed 's/^"\(.*\)"$/\1/')

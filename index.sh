@@ -26,7 +26,7 @@ function getId() {
 function buildIndex() {
     fields=('displayName' 'version' 'type' 'name' 'description' 'publisher')
     ## search for all editors and plugins
-    declare -a arr=(`find "$1" -name "meta.yaml"`)
+    declare -a arr="($(find "$1" -name 'meta.yaml'))"
     FIRST_LINE=true
     echo "["
     ## now loop through meta files
@@ -39,10 +39,10 @@ function buildIndex() {
             echo ",{"
         fi
 
-        plugin_id=$(getId $i)
+        plugin_id=$(getId "$i")
         echo "  \"id\": \"$plugin_id\","
 
-        for field in ${fields[@]}
+        for field in "${fields[@]}"
         do
             echo "  \"$field\":\""$(yq r "$i" "$field" | sed 's/^"\(.*\)"$/\1/')"\","
         done
