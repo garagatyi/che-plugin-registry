@@ -66,7 +66,7 @@ function deploy() {
     IMAGE="che-plugin-registry"
   fi
 
-  if [ -n "${QUAY_USERNAME}" -a -n "${QUAY_PASSWORD}" ]; then
+  if [ -n "${QUAY_USERNAME}" ] && [ -n "${QUAY_PASSWORD}" ]; then
     docker login -u "${QUAY_USERNAME}" -p "${QUAY_PASSWORD}" "${REGISTRY}"
   else
     echo "Could not login, missing credentials for the registry"
