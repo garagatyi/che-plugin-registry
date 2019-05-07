@@ -13,8 +13,7 @@ set -e
 is_first_publication_date_present() {
   # check that first publication date is present in yaml,
   # and is not an null or empty value
-  VALUE=$(yq r "$1" firstPublicationDate)
-  if [ $? -ne 0 ]; then
+  if ! VALUE=$(yq r "$1" firstPublicationDate); then
     exit 1
   fi
 
