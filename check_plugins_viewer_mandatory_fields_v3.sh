@@ -47,7 +47,7 @@ function check_category() {
 readarray -d '' arr < <(find v3 -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
-    plugin_id=$(evaluate_plugin_id $i)
+    plugin_id=$(evaluate_plugin_id "$i")
 
     echo "Checking plugin '${plugin_id}'"
 
@@ -55,7 +55,7 @@ do
 
     for FIELD in "${FIELDS[@]}"
     do
-      VALUE=$(yq r $i "$FIELD")
+      VALUE=$(yq r "$i" "$FIELD")
       if [[ "${FIELD}" == "category" ]];then
         if ! check_category "$i" "${VALUE}";then
           echo "!!!   Invalid category in '${plugin_id}': $VALUE"

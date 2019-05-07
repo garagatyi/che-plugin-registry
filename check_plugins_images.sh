@@ -19,7 +19,7 @@ do
     ICON=$(yq r "$i" icon | sed 's/^"\(.*\)"$/\1/')
     # Regex: contains .svg and not contains dots after it (to avoid xxx.svg.jpg hacks)
     if [[ ! $ICON =~ (\.svg)+[^\.]*$ ]]; then
-      plugin_id=$(evaluate_plugin_id $i)
+      plugin_id=$(evaluate_plugin_id "$i")
       plugin_version=$(yq r "$i" version | sed 's/^"\(.*\)"$/\1/')
       plugin_publisher=$(yq r "$i" publisher | sed 's/^"\(.*\)"$/\1/')
       echo "!!!   Wrong icon type found in '${plugin_id}' of publisher '${plugin_publisher}' with version '${plugin_version}':"

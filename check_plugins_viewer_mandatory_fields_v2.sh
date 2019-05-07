@@ -45,7 +45,7 @@ function check_category() {
 readarray -d '' arr < <(find v2 -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
-    plugin_id=$(evaluate_plugin_id $i)
+    plugin_id=$(evaluate_plugin_id "$i")
 
     echo "Checking plugin '${plugin_id}'"
 

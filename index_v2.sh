@@ -47,7 +47,8 @@ function buildIndex() {
 
         for field in "${fields[@]}"
         do
-            echo "  \"$field\":\""$(yq r "$i" "$field" | sed 's/^"\(.*\)"$/\1/')"\","
+            value="$(yq r "$i" "$field" | sed 's/^"\(.*\)"$/\1/')"
+            echo "  \"$field\":\"$value\","
         done
 
         # Add deprecate section
@@ -63,7 +64,8 @@ function buildIndex() {
             echo "  },"
         fi
 
-        echo "  \"links\": {\"self\":\"/$(echo $i|sed 's/\/meta.yaml$//g')\" }"
+        path=$(echo "$i" | sed 's/\/meta.yaml$//g')
+        echo "  \"links\": {\"self\":\"/$path\" }"
         echo "}"
     done
     echo "]"
