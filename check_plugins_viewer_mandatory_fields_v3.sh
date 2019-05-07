@@ -44,7 +44,7 @@ function check_category() {
   return 1
 }
 
-declare -a arr=(`find v3 -name "meta.yaml"`)
+readarray -d '' arr < <(find v3 -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
     plugin_id=$(evaluate_plugin_id $i)

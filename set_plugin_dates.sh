@@ -24,7 +24,7 @@ is_first_publication_date_present() {
   return 0;
 }
 
-declare -a arr="($(find . -name 'meta.yaml'))"
+readarray -d '' arr < <(find . -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
     DATE=$(date -I)

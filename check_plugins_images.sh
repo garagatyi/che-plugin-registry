@@ -13,7 +13,7 @@ set -e
 source ./util.sh
 
 ## check that icon tags in meta.yaml files points to the .svg images
-declare -a arr="($(find . -name 'meta.yaml'))"
+readarray -d '' arr < <(find . -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
     ICON=$(yq r "$i" icon | sed 's/^"\(.*\)"$/\1/')

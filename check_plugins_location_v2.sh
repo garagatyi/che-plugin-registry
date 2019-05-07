@@ -16,7 +16,7 @@ set -e
 
 source ./util.sh
 
-declare -a arr=(`find "$1" -name "meta.yaml"`)
+readarray -d '' arr < <(find "$1" -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
     plugin_id=$(evaluate_plugin_id $i)

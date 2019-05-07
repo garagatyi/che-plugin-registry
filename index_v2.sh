@@ -29,7 +29,7 @@ function getId() {
 function buildIndex() {
     fields=('displayName' 'version' 'type' 'name' 'description' 'publisher')
     ## search for all editors and plugins
-    declare -a arr="($(find "$1" -name 'meta.yaml'))"
+    readarray -d '' arr < <(find "$1" -name 'meta.yaml' -print0)
     FIRST_LINE=true
     echo "["
     ## now loop through meta files

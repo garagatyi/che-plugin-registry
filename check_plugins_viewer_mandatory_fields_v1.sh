@@ -42,7 +42,7 @@ function check_category() {
   return 1
 }
 
-declare -a arr="($(find plugins -name 'meta.yaml'))"
+readarray -d '' arr < <(find plugins -name 'meta.yaml' -print0)
 for i in "${arr[@]}"
 do
     id=$(yq r "$i" id | sed 's/^"\(.*\)"$/\1/')
